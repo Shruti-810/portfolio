@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shruti Makwana — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1D35;
+    --navy-mid: #152948;
+    --navy-light: #1E3A5F;
+    --accent: #3A7BD5;
+    --accent-light: #5B9AE8;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --white: #F8F7F4;
+    --muted: #A8B5C8;
+    --text: #D6E0ED;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--navy);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 60px;
+    background: rgba(11,29,53,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 0; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 60px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  h1 em { font-style: italic; color: var(--accent-light); }
+  .hero-summary {
+    color: var(--muted); font-size: 1.05rem; line-height: 1.75;
+    margin-bottom: 40px; max-width: 460px;
+  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; border-radius: 6px;
+    font-family: var(--sans); font-size: 0.875rem; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border: 1px solid var(--card-border);
+  }
+  .btn-outline:hover { border-color: var(--muted); }
+
+  /* hero right — decorative stat card cluster */
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    transform: rotate(2deg);
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 24px 20px;
+    transition: transform 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-3px); }
+  .stat-card.accent-card {
+    background: linear-gradient(135deg, rgba(58,123,213,0.2), rgba(58,123,213,0.06));
+    border-color: rgba(58,123,213,0.3);
+    grid-column: span 2;
+  }
+  .stat-num {
+    font-family: var(--serif); font-size: 2.4rem;
+    color: var(--white); line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 6px; font-weight: 500; }
+  .stat-icon { font-size: 1.5rem; margin-bottom: 10px; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--navy-mid); }
+  h2 {
+    font-family: var(--serif); font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    color: var(--white); margin-bottom: 12px;
+  }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content:''; display:block; width:24px; height:1px; background: var(--gold); }
+  .section-intro { color: var(--muted); margin-bottom: 56px; max-width: 560px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .skill-group {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 28px;
+  }
+  .skill-group-title {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 16px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    background: rgba(255,255,255,0.07); border: 1px solid var(--card-border);
+    border-radius: 4px; padding: 4px 12px;
+    font-size: 0.82rem; color: var(--text); font-weight: 400;
+    transition: background 0.2s, color 0.2s;
+  }
+  .tag:hover { background: rgba(58,123,213,0.15); color: var(--accent-light); border-color: rgba(58,123,213,0.3); }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 0; }
+  .project-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 14px; padding: 36px; position: relative; overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card:hover { border-color: rgba(58,123,213,0.4); transform: translateY(-3px); }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--card-border); transition: background 0.2s;
+  }
+  .project-card:hover::before { background: var(--accent); }
+  .project-num {
+    font-family: var(--serif); font-size: 3.5rem; color: rgba(255,255,255,0.04);
+    position: absolute; top: 18px; right: 24px; line-height: 1; user-select: none;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tech-pill {
+    background: rgba(58,123,213,0.12); color: var(--accent-light);
+    border: 1px solid rgba(58,123,213,0.2);
+    border-radius: 20px; padding: 2px 10px; font-size: 0.75rem; font-weight: 500;
+  }
+  h3 {
+    font-family: var(--serif); font-size: 1.35rem; color: var(--white);
+    margin-bottom: 12px; line-height: 1.25;
+  }
+  .project-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .project-bullets { list-style: none; margin-top: 14px; }
+  .project-bullets li {
+    font-size: 0.875rem; color: var(--muted); padding: 4px 0 4px 18px; position: relative;
+  }
+  .project-bullets li::before {
+    content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--navy-mid); }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--card-border); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-meta { }
+  .timeline-period { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .timeline-company { font-size: 0.875rem; color: var(--gold); font-weight: 600; }
+  .timeline-location { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .timeline-role { font-family: var(--serif); font-size: 1.3rem; color: var(--white); margin-bottom: 14px; }
+  .timeline-points { list-style: none; }
+  .timeline-points li { font-size: 0.9rem; color: var(--muted); padding: 5px 0 5px 20px; position: relative; line-height: 1.6; }
+  .timeline-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 0.85rem; }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .edu-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 32px;
+  }
+  .edu-degree { font-family: var(--serif); font-size: 1.15rem; color: var(--white); margin-bottom: 8px; }
+  .edu-school { color: var(--accent-light); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+  .edu-period { color: var(--muted); font-size: 0.82rem; }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    background: var(--navy-mid);
+  }
+  .contact-intro { color: var(--muted); max-width: 500px; margin: 0 auto 48px; font-size: 1.05rem; }
+  .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px; background: var(--card-bg);
+    border: 1px solid var(--card-border); border-radius: 8px;
+    color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent-light); background: rgba(58,123,213,0.08); }
+  .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 32px;
+    font-size: 0.8rem; color: var(--muted);
+    border-top: 1px solid var(--card-border);
+  }
+
+  /* ── DECORATIVE BG ELEMENTS ── */
+  .bg-glow {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,123,213,0.12) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-content, .hero-visual { position: relative; z-index: 1; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 820px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .container { padding: 0 24px; }
+    section { padding: 72px 0; }
+    .hero-grid, .projects-grid, .edu-grid { grid-template-columns: 1fr; }
+    .hero-visual { transform: none; }
+    .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">SM</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="bg-glow" style="width:600px;height:600px;top:-100px;right:-100px;"></div>
+  <div class="bg-glow" style="width:400px;height:400px;bottom:0;left:-80px;"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Full Stack Developer</p>
+        <h1>Shruti<br/><em>Makwana</em></h1>
+        <p class="hero-summary">
+          Building scalable, high-performance web applications with a passion for clean architecture, RESTful APIs, and crafting user-friendly experiences that drive real impact.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="stat-card">
+          <div class="stat-icon">💻</div>
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Projects Shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌐</div>
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Frameworks</div>
+        </div>
+        <div class="stat-card accent-card">
+          <div class="stat-icon">☁️</div>
+          <div class="stat-num">Full Stack</div>
+          <div class="stat-label">React · Node.js · AWS · Azure · GCP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Technical Skills</p>
+    <h2>Tools of the Trade</h2>
+    <p class="section-intro">From systems design to deployment, I work across the full stack.</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">JavaScript</span><span class="tag">TypeScript</span>
+          <span class="tag">Python</span><span class="tag">Java</span>
+          <span class="tag">C / C++</span><span class="tag">C#</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Frameworks</div>
+        <div class="skill-tags">
+          <span class="tag">React.js</span><span class="tag">Next.js</span>
+          <span class="tag">Vue.js</span><span class="tag">Node.js</span>
+          <span class="tag">Express.js</span><span class="tag">ASP.NET</span>
+          <span class="tag">Laravel</span><span class="tag">React Native</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Databases</div>
+        <div class="skill-tags">
+          <span class="tag">MySQL</span><span class="tag">MongoDB</span>
+          <span class="tag">Microsoft SQL</span><span class="tag">Oracle SQL</span>
+          <span class="tag">SQLite</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Cloud & DevOps</div>
+        <div class="skill-tags">
+          <span class="tag">AWS</span><span class="tag">Azure</span>
+          <span class="tag">GCP</span><span class="tag">Docker</span>
+          <span class="tag">Jenkins</span><span class="tag">Git</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Practices</div>
+        <div class="skill-tags">
+          <span class="tag">REST API</span><span class="tag">MVC</span>
+          <span class="tag">Agile / Scrum</span><span class="tag">OOP</span>
+          <span class="tag">SDLC</span><span class="tag">UML</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Interests</div>
+        <div class="skill-tags">
+          <span class="tag">DevOps</span><span class="tag">Web3</span>
+          <span class="tag">System Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Projects</p>
+    <h2>What I've Built</h2>
+    <p class="section-intro" style="margin-bottom:48px;">A selection of projects spanning mobile, web, and real-time systems.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <div class="project-tech">
+          <span class="tech-pill">React Native</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">MySQL</span>
+          <span class="tech-pill">OpenAI</span>
+          <span class="tech-pill">Google Maps API</span>
+        </div>
+        <h3>Mountain Finder Mobile App</h3>
+        <ul class="project-bullets">
+          <li>Identifies mountains from images using a local ML model built in Python</li>
+          <li>Integrated OpenAI to surface rich mountain descriptions and relevant info</li>
+          <li>Google Maps API lets users mark viewpoints and discover nearby places</li>
+          <li>SOS alerts, real-time weather updates, and a built-in safety whistle</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <div class="project-tech">
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">Express.js</span>
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node.js</span>
+        </div>
+        <h3>Memories — Social Media App</h3>
+        <ul class="project-bullets">
+          <li>Full-featured social platform with login, posts, comments, and likes</li>
+          <li>Google OAuth authentication and tag-based search and filtering</li>
+          <li>Pagination and "Recommended Posts" to improve engagement and scale</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <div class="project-tech">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">WebSocket</span>
+        </div>
+        <h3>Pizzalicious — Pizza Delivery System</h3>
+        <ul class="project-bullets">
+          <li>Dual-user system with separate admin and customer dashboards</li>
+          <li>Real-time order tracking powered by WebSockets</li>
+          <li>Admins manage menus, orders, and users; customers track orders live</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2>Work History</h2>
+    <p class="section-intro" style="margin-bottom:48px;"></p>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div class="timeline-period">Aug 2022 – Aug 2023</div>
+          <div class="timeline-company">Scalybee Digital</div>
+          <div class="timeline-location">Gujarat, India</div>
+        </div>
+        <div>
+          <div class="timeline-role">Junior Full Stack Developer</div>
+          <ul class="timeline-points">
+            <li>Built front-end interfaces with HTML, Tailwind CSS, and Vue.js</li>
+            <li>Developed backend logic with Laravel and MySQL, including role-based access control</li>
+            <li>Integrated APIs with client- and server-side validation</li>
+            <li>Performed unit testing and resolved critical production issues before deployment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div class="timeline-period">May 2021 – Aug 2021</div>
+          <div class="timeline-company">Verzeo</div>
+          <div class="timeline-location">Bangalore, India</div>
+        </div>
+        <div>
+          <div class="timeline-role">Software Development Intern</div>
+          <ul class="timeline-points">
+            <li>Built mini projects with HTML, CSS, and JavaScript covering form validation and DOM manipulation</li>
+            <li>Explored backend basics with Node.js connected to a local database</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Education</p>
+    <h2>Academic Background</h2>
+    <p class="section-intro" style="margin-bottom:40px;"></p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Diploma in Software Development</div>
+        <div class="edu-school">Southern Alberta Institute of Technology (SAIT)</div>
+        <div class="edu-period">Sept 2023 – July 2025 · Calgary, AB</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech in Computer Engineering</div>
+        <div class="edu-school">Dharmsinh Desai University</div>
+        <div class="edu-period">July 2019 – May 2023 · India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label" style="justify-content:center;">Contact</p>
+    <h2>Let's Connect</h2>
+    <p class="contact-intro">Open to new opportunities, collaborations, and interesting projects. Don't hesitate to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:shrutimak810@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        shrutimak810@gmail.com
+      </a>
+      <a href="https://github.com/Shruti-810" target="_blank" rel="noopener" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        github.com/Shruti-810
+      </a>
+      <a href="https://linkedin.com/in/shruti-makwana" target="_blank" rel="noopener" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        linkedin.com/in/shruti-makwana
+      </a>
+      <a href="tel:+13682992145" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .89h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        +1 368-299-2145
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Shruti Makwana · Calgary, AB</p>
+</footer>
+
+</body>
+</html>
